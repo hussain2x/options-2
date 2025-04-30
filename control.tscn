@@ -1,0 +1,138 @@
+[gd_scene load_steps=10 format=3 uid="uid://yqxmsmb1ylsf"]
+
+[ext_resource type="Script" uid="uid://bf88h8dytqbo4" path="res://camera_pos.gd" id="1_62e2m"]
+[ext_resource type="Script" uid="uid://dmx18q1yocgkd" path="res://new game.gd" id="3_ee4bf"]
+[ext_resource type="Script" uid="uid://duy46ih1jy2jr" path="res://options.gd" id="3_kbped"]
+[ext_resource type="Script" uid="uid://delcsirotvj2k" path="res://home.gd" id="3_qtu10"]
+[ext_resource type="Script" uid="uid://c0idk1nkyslk" path="res://new_game_scene.gd" id="5_fj5cn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qtu10"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qtu10"]
+font_size = 116
+outline_size = 8
+
+[sub_resource type="Gradient" id="Gradient_62e2m"]
+interpolation_mode = 2
+interpolation_color_space = 1
+colors = PackedColorArray(0.262745, 0.384314, 0.705882, 1, 0.760784, 0, 0.145098, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qtu10"]
+gradient = SubResource("Gradient_62e2m")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Camera target" type="CharacterBody2D" parent="."]
+z_index = 1
+scale = Vector2(1.2265, 1.2265)
+script = ExtResource("1_62e2m")
+
+[node name="Camera" type="Camera2D" parent="Camera target"]
+anchor_mode = 0
+position_smoothing_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera target"]
+shape = SubResource("RectangleShape2D_qtu10")
+
+[node name="Home scene" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.762635, 0, 0.143696, 1)
+
+[node name="new game button" type="Button" parent="Home scene"]
+z_index = 1
+layout_mode = 2
+offset_left = 14.0
+offset_top = 265.0
+offset_right = 484.0
+offset_bottom = 342.0
+mouse_default_cursor_shape = 2
+script = ExtResource("3_ee4bf")
+
+[node name="new game label" type="Label" parent="Home scene/new game button"]
+z_index = 1
+layout_mode = 0
+offset_left = 17.0
+offset_top = 16.0
+offset_right = 1089.0
+offset_bottom = 174.0
+scale = Vector2(0.255883, 0.255883)
+text = "New Game"
+label_settings = SubResource("LabelSettings_qtu10")
+
+[node name="options" type="Button" parent="Home scene"]
+z_index = 1
+layout_mode = 2
+offset_left = 14.0
+offset_top = 350.0
+offset_right = 484.0
+offset_bottom = 427.0
+mouse_default_cursor_shape = 2
+script = ExtResource("3_kbped")
+
+[node name="options label" type="Label" parent="Home scene/options"]
+z_index = 1
+layout_mode = 0
+offset_left = 17.0
+offset_top = 16.0
+offset_right = 1089.0
+offset_bottom = 174.0
+scale = Vector2(0.255883, 0.255883)
+text = "Options"
+label_settings = SubResource("LabelSettings_qtu10")
+
+[node name="TextureRect" type="TextureRect" parent="Home scene"]
+layout_mode = 0
+offset_top = 648.0
+offset_right = 1152.0
+offset_bottom = 1296.0
+texture = SubResource("GradientTexture2D_qtu10")
+
+[node name="New game" type="ColorRect" parent="Home scene"]
+offset_top = 1296.0
+offset_right = 1152.0
+offset_bottom = 1944.0
+color = Color(0.2608, 0.384515, 0.704845, 1)
+
+[node name="Home" type="CanvasLayer" parent="."]
+
+[node name="Home button" type="Button" parent="Home"]
+z_index = 1
+offset_left = 17.0
+offset_top = 16.0
+offset_right = 207.0
+offset_bottom = 93.0
+mouse_default_cursor_shape = 2
+script = ExtResource("3_qtu10")
+
+[node name="Home label" type="Label" parent="Home/Home button"]
+z_index = 1
+layout_mode = 0
+offset_left = 17.0
+offset_top = 16.0
+offset_right = 285.0
+offset_bottom = 174.0
+scale = Vector2(0.255883, 0.255883)
+text = "Back"
+label_settings = SubResource("LabelSettings_qtu10")
+
+[node name="New game scene" type="Container" parent="."]
+layout_mode = 0
+offset_top = 1296.0
+offset_right = 1152.0
+offset_bottom = 1944.0
+script = ExtResource("5_fj5cn")
+
+[connection signal="pressed" from="Home scene/new game button" to="Home scene/new game button" method="_on_pressed"]
+[connection signal="pressed" from="Home scene/options" to="Home scene/options" method="_on_pressed"]
+[connection signal="pressed" from="Home/Home button" to="Home/Home button" method="_on_pressed"]
