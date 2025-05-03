@@ -1,26 +1,80 @@
-[gd_scene load_steps=10 format=3 uid="uid://yqxmsmb1ylsf"]
+[gd_scene load_steps=21 format=3 uid="uid://yqxmsmb1ylsf"]
 
 [ext_resource type="Script" uid="uid://bf88h8dytqbo4" path="res://camera_pos.gd" id="1_62e2m"]
+[ext_resource type="StyleBox" uid="uid://bxugocityynux" path="res://top button.tres" id="2_fj5cn"]
 [ext_resource type="Script" uid="uid://dmx18q1yocgkd" path="res://new game.gd" id="3_ee4bf"]
 [ext_resource type="Script" uid="uid://duy46ih1jy2jr" path="res://options.gd" id="3_kbped"]
 [ext_resource type="Script" uid="uid://delcsirotvj2k" path="res://home.gd" id="3_qtu10"]
-[ext_resource type="Script" uid="uid://c0idk1nkyslk" path="res://new_game_scene.gd" id="5_fj5cn"]
+[ext_resource type="Script" uid="uid://cjinpowe7d3pd" path="res://exit.gd" id="4_kbped"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qtu10"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6a6wx"]
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fj5cn"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_qtu10"]
-font_size = 116
-outline_size = 8
+font_size = 96
+outline_size = 10
+shadow_size = 0
+shadow_offset = Vector2(-8.14, 5.635)
 
-[sub_resource type="Gradient" id="Gradient_62e2m"]
-interpolation_mode = 2
-interpolation_color_space = 1
-colors = PackedColorArray(0.262745, 0.384314, 0.705882, 1, 0.760784, 0, 0.145098, 1)
+[sub_resource type="GDScript" id="GDScript_kbped"]
+script/source = "extends Label
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qtu10"]
-gradient = SubResource("Gradient_62e2m")
-fill_from = Vector2(0, 1)
-fill_to = Vector2(0, 0)
+
+func _on_mouse_entered() -> void:
+	print(\"in\")
+
+func _on_mouse_exited() -> void:
+	print(\"out\")
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ee4bf"]
+bg_color = Color(0, 0, 0, 0.6)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ee4bf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ytqx"]
+bg_color = Color(0, 0, 0, 0.21)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pxugv"]
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kbped"]
+bg_color = Color(0, 0, 0, 0.21)
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sky72"]
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eh0v1"]
+bg_color = Color(0, 0, 0, 0.21)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+expand_margin_left = 154.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fj5cn"]
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iy58a"]
+bg_color = Color(0, 0, 0, 0.21)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -38,101 +92,203 @@ script = ExtResource("1_62e2m")
 [node name="Camera" type="Camera2D" parent="Camera target"]
 anchor_mode = 0
 position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera target"]
 shape = SubResource("RectangleShape2D_qtu10")
 
-[node name="Home scene" type="ColorRect" parent="."]
+[node name="red" type="ColorRect" parent="."]
 z_index = -1
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.762635, 0, 0.143696, 1)
 
-[node name="new game button" type="Button" parent="Home scene"]
+[node name="new game button" type="Button" parent="red"]
 z_index = 1
 layout_mode = 2
-offset_left = 14.0
-offset_top = 265.0
-offset_right = 484.0
-offset_bottom = 342.0
+anchor_right = 0.408
+anchor_bottom = 0.086
+offset_left = 448.0
+offset_top = 320.0
+offset_right = 233.984
+offset_bottom = 328.272
 mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_6a6wx")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_6a6wx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6a6wx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fj5cn")
+theme_override_styles/normal = ExtResource("2_fj5cn")
 script = ExtResource("3_ee4bf")
 
-[node name="new game label" type="Label" parent="Home scene/new game button"]
+[node name="new game label" type="Label" parent="red/new game button"]
 z_index = 1
 layout_mode = 0
-offset_left = 17.0
-offset_top = 16.0
-offset_right = 1089.0
-offset_bottom = 174.0
+offset_top = 12.0
+offset_right = 1001.0
+offset_bottom = 170.0
 scale = Vector2(0.255883, 0.255883)
 text = "New Game"
 label_settings = SubResource("LabelSettings_qtu10")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = SubResource("GDScript_kbped")
 
-[node name="options" type="Button" parent="Home scene"]
+[node name="options" type="Button" parent="red"]
 z_index = 1
 layout_mode = 2
-offset_left = 14.0
-offset_top = 350.0
-offset_right = 484.0
-offset_bottom = 427.0
+anchor_top = 0.086
+anchor_right = 0.408
+anchor_bottom = 0.173
+offset_left = 448.0
+offset_top = 328.272
+offset_right = 233.984
+offset_bottom = 335.896
 mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_ee4bf")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_ee4bf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ee4bf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ee4bf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0ytqx")
 script = ExtResource("3_kbped")
 
-[node name="options label" type="Label" parent="Home scene/options"]
+[node name="options label" type="Label" parent="red/options"]
 z_index = 1
 layout_mode = 0
-offset_left = 17.0
-offset_top = 16.0
-offset_right = 1089.0
-offset_bottom = 174.0
+offset_top = 9.0
+offset_right = 1001.0
+offset_bottom = 167.0
 scale = Vector2(0.255883, 0.255883)
 text = "Options"
 label_settings = SubResource("LabelSettings_qtu10")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Home scene"]
+[node name="exit" type="Button" parent="red"]
+z_index = 1
+layout_mode = 2
+anchor_top = 0.173
+anchor_right = 0.408
+anchor_bottom = 0.249
+offset_left = 448.0
+offset_top = 335.896
+offset_right = 233.984
+offset_bottom = 350.648
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_pxugv")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_pxugv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pxugv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ee4bf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kbped")
+script = ExtResource("4_kbped")
+
+[node name="exit label" type="Label" parent="red/exit"]
+z_index = 1
+layout_mode = 0
+offset_top = 9.0
+offset_right = 1001.0
+offset_bottom = 167.0
+scale = Vector2(0.255883, 0.255883)
+text = "Exit"
+label_settings = SubResource("LabelSettings_qtu10")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="blue" type="ColorRect" parent="."]
+z_index = -1
 layout_mode = 0
 offset_top = 648.0
 offset_right = 1152.0
 offset_bottom = 1296.0
-texture = SubResource("GradientTexture2D_qtu10")
+color = Color(0.312178, 0.328894, 0.811498, 1)
 
-[node name="New game" type="ColorRect" parent="Home scene"]
-offset_top = 1296.0
-offset_right = 1152.0
-offset_bottom = 1944.0
-color = Color(0.2608, 0.384515, 0.704845, 1)
+[node name="LineEdit" type="LineEdit" parent="blue"]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 320.0
+offset_right = 823.0
+offset_bottom = 384.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_sky72")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_eh0v1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_eh0v1")
+placeholder_text = "Name"
+alignment = 1
+max_length = 25
+emoji_menu_enabled = false
+
+[node name="Name_" type="Label" parent="blue/LineEdit"]
+z_index = 1
+layout_mode = 0
+offset_left = -154.0
+offset_top = 9.0
+offset_right = 448.0
+offset_bottom = 167.0
+scale = Vector2(0.255883, 0.255883)
+text = "Name"
+label_settings = SubResource("LabelSettings_qtu10")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="create" type="Button" parent="blue"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.173
+anchor_right = 0.408
+anchor_bottom = 0.249
+offset_left = 342.0
+offset_top = 271.896
+offset_right = 352.984
+offset_bottom = 286.648
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_pxugv")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_pxugv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pxugv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ee4bf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kbped")
+script = ExtResource("4_kbped")
+
+[node name="create label" type="Label" parent="blue/create"]
+z_index = 1
+layout_mode = 0
+offset_top = 9.0
+offset_right = 1880.0
+offset_bottom = 167.0
+scale = Vector2(0.255883, 0.255883)
+text = "Create"
+label_settings = SubResource("LabelSettings_qtu10")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Home" type="CanvasLayer" parent="."]
 
 [node name="Home button" type="Button" parent="Home"]
 z_index = 1
-offset_left = 17.0
+offset_left = 16.0
 offset_top = 16.0
-offset_right = 207.0
-offset_bottom = 93.0
+offset_right = 136.0
+offset_bottom = 72.0
 mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_fj5cn")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_fj5cn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fj5cn")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ee4bf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_iy58a")
 script = ExtResource("3_qtu10")
 
 [node name="Home label" type="Label" parent="Home/Home button"]
 z_index = 1
 layout_mode = 0
-offset_left = 17.0
-offset_top = 16.0
-offset_right = 285.0
-offset_bottom = 174.0
+offset_top = 9.0
+offset_right = 469.0
+offset_bottom = 167.0
 scale = Vector2(0.255883, 0.255883)
 text = "Back"
 label_settings = SubResource("LabelSettings_qtu10")
+horizontal_alignment = 1
 
-[node name="New game scene" type="Container" parent="."]
-layout_mode = 0
-offset_top = 1296.0
-offset_right = 1152.0
-offset_bottom = 1944.0
-script = ExtResource("5_fj5cn")
-
-[connection signal="pressed" from="Home scene/new game button" to="Home scene/new game button" method="_on_pressed"]
-[connection signal="pressed" from="Home scene/options" to="Home scene/options" method="_on_pressed"]
+[connection signal="pressed" from="red/new game button" to="red/new game button" method="_on_pressed"]
+[connection signal="pressed" from="red/options" to="red/options" method="_on_pressed"]
+[connection signal="pressed" from="red/exit" to="red/exit" method="_on_pressed"]
+[connection signal="pressed" from="blue/create" to="blue/create" method="_on_pressed"]
 [connection signal="pressed" from="Home/Home button" to="Home/Home button" method="_on_pressed"]

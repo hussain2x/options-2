@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxFlat" format=3 uid="uid://bxugocityynux"]
+
+[resource]
+bg_color = Color(0, 0, 0, 0.21)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
